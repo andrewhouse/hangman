@@ -15,4 +15,5 @@
 class Game < ActiveRecord::Base
   # ^ Know's to look at 'games' table for data
   # Also Defines methods from schema
+  validates_presence_of :answer, :max_misses, :misses, :guessed
 end
