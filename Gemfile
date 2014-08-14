@@ -17,4 +17,5 @@ group :development do
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'quiet_assets'
+  gem 'annotate' #adds reference schema comments to model
 end
