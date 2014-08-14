@@ -17,5 +17,7 @@ group :development do
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'quiet_assets'
-  gem 'annotate' #adds reference schema comments to model
+  gem 'annotate' # adds reference schema comments to model
+  gem 'better_errors' # makes the error page on browser much more efficient
+  gem 'binding_of_caller' # adds a binding.pry ish session on errors in browser
 end
