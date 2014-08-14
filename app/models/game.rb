@@ -15,12 +15,12 @@
 class Game < ActiveRecord::Base
   # ^ Know's to look at 'games' table for data
   # Also Defines methods from schema
-  validates_presence_of :answer, :max_misses, :misses
   before_validation :guessed_default
+  validates_presence_of :answer, :max_misses, :misses
   def board
     # Take @answer and only show letters that the player has guessed
     result = ''
-    answer.split('').each do |char|
+    answer.split('').each do |char| # can use self.answer or self.guessed throughout
       if guessed.include?(char)
         result += char
       else
@@ -30,9 +30,21 @@ class Game < ActiveRecord::Base
     result
   end
 
+  def guess(letter)
+    letter.downcase!
+    found = answer.include?(letter)
+
+    unless guessed.include?(letter)
+      self.guessed += letter
+      self.misses += 1 unless found
+    end
+    self.save!
+    found
+  end
+
   private
 
   def guessed_default
-    self.guessed ||= 0
+    self.guessed ||= ''
   end
 end
