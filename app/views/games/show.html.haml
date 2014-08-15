@@ -32,12 +32,17 @@
       = link_to t('.cancel', :default => t("helpers.links.cancel")), games_path, :class => 'btn'
 -elsif @game.won?
   %h1
-    Congratulations, You Won! Please Enter Your Name.
-    = simple_form_for @game, :html => { :class => 'form-horizontal' }, method: 'patch' do |f|
-      = f.input :winner
-      .form-actions
-        = f.button :submit, :class => 'btn-primary', value: "Submit Your Name"
-        = link_to t('.cancel', :default => t("helpers.links.cancel")), games_path, :class => 'btn'
+
+    -unless @game.winner
+      %h3
+        Congratulations! Please Enter Your Name
+      = simple_form_for @game, :html => { :class => 'form-horizontal' }, method: 'patch' do |f|
+        = f.input :winner
+        .form-actions
+          = f.button :submit, :class => 'btn-primary', value: "Submit Your Name"
+          = link_to t('.cancel', :default => t("helpers.links.cancel")), games_path, :class => 'btn'
+    -else
+      ="#{@game.winner} Solved the Puzzle!"
 -else
   %h1
     ="Sorry that you suck. The word was #{@game.answer}"
