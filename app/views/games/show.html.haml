@@ -25,7 +25,7 @@
   = simple_form_for :games, :html => { :class => 'form-horizontal' }, method: 'patch' do |f|
     = f.text_field :guess
     .form-actions
-      = f.button :submit, :class => 'btn-primary'
+      = f.button :submit, :class => 'btn-primary', value: "Take a Guess"
       = link_to t('.cancel', :default => t("helpers.links.cancel")), games_path, :class => 'btn'
 -elsif @game.won?
   %h1
