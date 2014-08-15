@@ -15,9 +15,9 @@ class GamesController < ApplicationController
   def create
     @game = Game.new(game_params)
     if @game.save!
-      redirect_to @game
+      redirect_to :index
     else
-      render :index
+      render :new
     end
   end
 
