@@ -6,7 +6,7 @@
       %th Status
       %th Created By
   %tbody
-    - @games.each do |game|
+    - @games.sort_by{|game| game.misses}.each do |game|
       %tr
         %td= game.id
         %td= link_to game.board, game
