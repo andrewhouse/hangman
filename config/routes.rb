@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   # get    '/games/new'      =>  'games#new'
   # get    '/games/:id/edit' =>  'games#edit'
   # delete '/games/:id'      =>  'games#destroy'
-
+  get 'complete' => 'games#complete', as: :complete
+  get 'incomplete' => 'games#incomplete', as: :incomplete
   root 'games#index'
 end

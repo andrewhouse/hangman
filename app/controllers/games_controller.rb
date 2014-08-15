@@ -33,6 +33,14 @@ class GamesController < ApplicationController
     end
   end
 
+  def complete
+    index
+  end
+
+  def incomplete
+    index
+  end
+
   private
 
   def set_game

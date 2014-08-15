@@ -1,0 +1,28 @@
+%table.table.table-striped
+  %thead
+    %tr
+      %th ID
+      %th Board
+      %th Status
+      %th Created By
+  %tbody
+    - @games.each do |game|
+      - if game.won?
+        %tr
+          %td= game.id
+          %td= link_to game.board, game
+          -if !game.finished?
+            %td
+              %span.label.label-info
+                = "#{game.misses} / #{game.max_misses}"
+          -elsif
+            -game.won?
+            %td
+              %span.label.label-success
+                = "#{game.winner} Solved it!"
+          -else
+            %td
+              %span.label.label-danger
+                Defeat!
+
+          %td= game.creator
