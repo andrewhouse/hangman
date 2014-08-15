@@ -22,9 +22,15 @@ class GamesController < ApplicationController
   end
 
   def update
-    letter = params[:games][:guess]
-    @game.guess(letter)
-    redirect_to @game, notice: 'Homework was successfully updated.'
+    if params[:games] && params[:games][:guess]
+      letter = params[:games][:guess]
+      @game.guess(letter)
+      redirect_to @game
+    else
+      @game[:winner] = params[:game][:winner]
+      @game.save
+      redirect_to root_path
+    end
   end
 
   private

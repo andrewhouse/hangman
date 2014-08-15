@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140814182657) do
+ActiveRecord::Schema.define(version: 20140815152529) do
 
   create_table "games", force: true do |t|
     t.string   "answer"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20140814182657) do
     t.string   "guessed"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "winner"
   end
 
 end
