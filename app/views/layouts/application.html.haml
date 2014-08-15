@@ -40,7 +40,8 @@
             %ul.nav.nav-list
               %li.nav-header Sidebar
               - Game.all.each do |game|
-                %li= link_to "Game #{game.id}", game
+                -unless game.finished?
+                  %li= link_to "Game #{game.id}", game
 
         .span10
           = bootstrap_flash
