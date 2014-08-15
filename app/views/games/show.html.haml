@@ -1,3 +1,12 @@
+:css
+  body{
+    text-align: center;
+  }
+
+.page-header
+  %h1
+    ="This is game #{@game.id}"
+
 %pre= @game.board
 
 %h3 Status
@@ -8,6 +17,19 @@
 %p
   = @game.guessed
 
-= form_tag( game_path(@game), method: "patch" ) do
-  = text_field_tag "letter"
-  = submit_tag "Guess"
+-# %form
+-#   %input.form-control{ name: "guess", placeholder: "Guess a letter", maxlength: 1 }
+-#   %button.btn.btn-default Guess
+-#
+-if !@game.finished?
+  = simple_form_for :games, :html => { :class => 'form-horizontal' }, method: 'patch' do |f|
+    = f.text_field :guess
+    .form-actions
+      = f.button :submit, :class => 'btn-primary'
+      = link_to t('.cancel', :default => t("helpers.links.cancel")), games_path, :class => 'btn'
+-elsif @game.won?
+  %h1
+    Congratulations, You Won!
+-else
+  %h1
+    ="Sorry that you suck. The word was #{@game.answer}"

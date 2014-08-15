@@ -1,6 +1,4 @@
-%h1 Hangman Games
-
-%table
+%table.table.table-striped
   %thead
     %tr
       %th ID
@@ -10,5 +8,17 @@
     - @games.each do |game|
       %tr
         %td= game.id
-        %td= game.board
-        %td= "#{game.misses} / #{game.max_misses}"
+        %td= link_to game.board, game
+        -if !game.finished?
+          %td
+            %span.label.label-info
+              = "#{game.misses} / #{game.max_misses}"
+        -elsif
+          -game.won?
+          %td
+            %span.label.label-success
+              Victory!
+        -else
+          %td
+            %span.label.label-danger
+              Defeat!

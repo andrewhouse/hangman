@@ -1,0 +1,31 @@
+/*
+  =require twitter-bootstrap-static/bootstrap
+
+  Use Font Awesome icons (default)
+  To use Glyphicons sprites instead of Font Awesome, replace with "require twitter-bootstrap-static/sprites"
+  =require twitter-bootstrap-static/fontawesome
+  */
+
+pre {
+  background: lightblue;
+}
+
+.well {
+  background: lightgreen;
+}
+
+.navbar-inner {
+  background: lightgreen
+}
+
+.nav > li > a:hover {
+  background: orange;
+}
+
+.pull-right > li:hover {
+  background: orange;
+}
+
+.brand:hover {
+  background: orange;
+}

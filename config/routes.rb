@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   # get    '/games/new'      =>  'games#new'
   # get    '/games/:id/edit' =>  'games#edit'
   # delete '/games/:id'      =>  'games#destroy'
+
+  root 'games#index'
 end

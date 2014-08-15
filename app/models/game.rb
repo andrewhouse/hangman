@@ -15,8 +15,8 @@
 class Game < ActiveRecord::Base
   # ^ Know's to look at 'games' table for data
   # Also Defines methods from schema
-  before_validation :guessed_default
-  validates_presence_of :answer, :max_misses, :misses
+  before_validation :guessed_default, :misses_default
+  validates_presence_of :answer, :max_misses
   def board
     # Take @answer and only show letters that the player has guessed
     result = ''
@@ -42,9 +42,25 @@ class Game < ActiveRecord::Base
     found
   end
 
+  def finished?
+    won? || lost?
+  end
+
+  def won?
+    !board.include?("_")
+  end
+
+  def lost?
+    misses == max_misses
+  end
+
   private
 
   def guessed_default
     self.guessed ||= ''
+  end
+
+  def misses_default
+    self.misses ||= 0
   end
 end
