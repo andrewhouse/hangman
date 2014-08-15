@@ -4,6 +4,7 @@
       %th ID
       %th Board
       %th Status
+      %th Created By
   %tbody
     - @games.each do |game|
       %tr
@@ -22,3 +23,5 @@
           %td
             %span.label.label-danger
               Defeat!
+
+        %td= game.creator

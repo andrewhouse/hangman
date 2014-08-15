@@ -9,6 +9,8 @@
 #  guessed    :string(255)
 #  created_at :datetime
 #  updated_at :datetime
+#  winner     :string(255)
+#  creator    :string(255)
 #
 
 # Create Model for Game
@@ -16,7 +18,7 @@ class Game < ActiveRecord::Base
   # ^ Know's to look at 'games' table for data
   # Also Defines methods from schema
   before_validation :guessed_default, :misses_default
-  validates_presence_of :answer, :max_misses
+  validates_presence_of :answer, :max_misses, :creator
   def board
     # Take @answer and only show letters that the player has guessed
     result = ''

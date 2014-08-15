@@ -40,6 +40,6 @@ class GamesController < ApplicationController
   end
 
   def game_params
-    params.require(:game).permit(:answer, :max_misses, :misses, :guessed)
+    params.require(:game).permit(:answer, :max_misses, :misses, :guessed, :creator)
   end
 end
