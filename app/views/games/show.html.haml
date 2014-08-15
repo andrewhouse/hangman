@@ -13,9 +13,12 @@
 %p
   = "#{@game.misses} / #{@game.max_misses} misses"
 
-%h3 Guessed
-%p
-  = @game.guessed
+-if @game.guessed.length > 0
+  %h3
+    Guessed
+    %p
+      = @game.guessed
+
 
 -# %form
 -#   %input.form-control{ name: "guess", placeholder: "Guess a letter", maxlength: 1 }
