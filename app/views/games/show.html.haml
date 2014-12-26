@@ -7,8 +7,12 @@
   %h1
     ="This is game #{@game.id}"
 
-%pre= @game.board
+%h3.background= @game.board
 
+%h3
+  Number of Letters
+%p
+  = @game.board.length
 %h3 Status
 %p
   = "#{@game.misses} / #{@game.max_misses} misses"
@@ -26,7 +30,7 @@
 -#
 -if !@game.finished?
   = simple_form_for :games, :html => { :class => 'form-horizontal' }, method: 'patch' do |f|
-    = f.text_field :guess
+    = f.text_field :guess, autofocus: true
     .form-actions
       = f.button :submit, :class => 'btn-primary', value: "Take a Guess"
       = link_to t('.cancel', :default => t("helpers.links.cancel")), games_path, :class => 'btn'
@@ -37,7 +41,7 @@
       %h3
         Congratulations! Please Enter Your Name
       = simple_form_for @game, :html => { :class => 'form-horizontal' }, method: 'patch' do |f|
-        = f.input :winner
+        = f.input :winner, autofocus: true
         .form-actions
           = f.button :submit, :class => 'btn-primary', value: "Submit Your Name"
           = link_to t('.cancel', :default => t("helpers.links.cancel")), games_path, :class => 'btn'
